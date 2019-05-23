@@ -37,11 +37,15 @@ data NotificationRecord = NotificationRecord
 
 newtype UserIdentity = UserIdentity
   { principalId :: Text
-  } deriving (Eq, Show, Generic, FromJSON)
+  }
+  deriving stock (Eq, Show, Generic)
+  deriving anyclass (FromJSON)
 
 newtype RequestParameters = RequestParameters
   { sourceIPAddress :: Text
-  } deriving (Eq, Show, Generic, FromJSON)
+  }
+  deriving stock (Eq, Show, Generic)
+  deriving anyclass (FromJSON)
 
 data S3Event = S3Event
   { s3SchemaVersion :: Text
@@ -58,9 +62,9 @@ data S3Bucket = S3Bucket
 
 data S3Object = S3Object
   { key       :: Text
-  , size      :: Int
-  , eTag      :: Text
-  , versionId :: Maybe Text
   , sequencer :: Text
+  , size      :: Maybe Int
+  , eTag      :: Maybe Text
+  , versionId :: Maybe Text
   } deriving (Eq, Show, Generic, FromJSON)
 
