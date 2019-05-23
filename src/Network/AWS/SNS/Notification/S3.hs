@@ -60,7 +60,7 @@ data S3Object = S3Object
   { key       :: Text
   , size      :: Int
   , eTag      :: Text
-  , versionId :: Text
+  , versionId :: Maybe Text
   , sequencer :: Text
   } deriving (Eq, Show, Generic, FromJSON)
 
